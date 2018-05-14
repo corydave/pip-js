@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<!-- 
+
+http://jqueryui.com/draggable/#handle
+http://jqueryui.com/resizable/
+
+-->
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery UI Resizable - Default functionality</title>
+	<link rel="stylesheet" href="themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="jquery-1.12.4.js"></script>
+
+
+
+	<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		table {
+			font-size: 1em;
+		}
+
+		.ui-draggable,
+		.ui-droppable {
+			background-position: top;
+		}
+
+
+		#draggable,
+		#draggable2 {
+			width: 100px;
+			height: 100px;
+			padding: 0.5em;
+			float: left;
+			margin: 0 10px 10px 0;
+		}
+
+		#draggable p {
+			cursor: move;
+		}
+
+		#resizable {
+			width: 150px;
+			height: 150px;
+			padding: 0.5em;
+		}
+
+		#resizable h3 {
+			text-align: center;
+			margin: 0;
+		}
+	</style>
+
+	<script src="jquery-ui.js"></script>
+
+
+
+	<script>
+		$( function() {
+    
+    $( "#resizable" ).resizable({
+      aspectRatio: 16 / 9
+    });    
+    
+    
+    
+    $( "#resizable" ).draggable({ handle: "video" });
+    $( "#resizable" ).draggable({ cancel: "video.ui-widget-header" });
+    $( "div, p" ).disableSelection();
+  } );
+	</script>
+
+	<script>
+		function pause() {
+    document.getElementById('myVideo').pause();
+    document.getElementById('myVideo2').pause();
+  }
+  
+   function play() {
+    document.getElementById('myVideo').play();
+    document.getElementById('myVideo2').play();
+  }
+	</script>
+
+
+	<style>
+		#myVideo {
+			position: fixed;
+			right: 0;
+			bottom: 0;
+			min-width: 100%;
+			min-height: 100%;
+		}
+
+		.content {
+			position: fixed;
+			bottom: 0;
+			background: rgba(0, 0, 0, 0.5);
+			color: #f1f1f1;
+			width: 100%;
+			padding: 20px;
+		}
+
+		#myBtn {
+			width: 200px;
+			font-size: 18px;
+			padding: 10px;
+			border: none;
+			background: #000;
+			color: #fff;
+			cursor: pointer;
+		}
+
+		#myBtn:hover {
+			background: #ddd;
+			color: black;
+		}
+	</style>
+
+
+</head>
+
+<body>
+
+	<video autoplay muted loop id="myVideo">
+		<source src="rain.mp4" type="video/mp4"> Your browser does not support HTML5 video.
+	</video>
+
+	<div id="resizable" class="ui-widget-content" style="width:160px;height:90px;background-color:black;">
+
+		<video autoplay muted loop id="myVideo2" width="100%">
+			<source src="TextStrip.mp4" type="video/mp4" id=""> Your browser does not support HTML5 video.
+		</video>
+
+	</div>
+
+	<div id="draggable" class="ui-widget-content">
+		<p class="ui-widget-header">I can be dragged only by this handle</p>
+	</div>
+
+  <div style="width:100%;display:inline-block;text-align:center;">
+    <div id="controls" style="position:absolute;bottom:0;left;0;margin-left:auto;margin-right:auto;display:inline-block;padding-bottom:20px;">
+      <button onclick="pause()">pause</button>
+      <button onclick="play()">play</button>
+    </div>
+  </div>
+</body>
+
+</html>
